@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Effect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .card-wrapper {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            width: 250px;
+            height: 330px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border-radius: 30px; /* Adding rounded corners */
+        }
+
+        .card .front, .card .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transition: transform 0.5s ease;
+            display: flex;
+            flex-direction: column; /* Stack content vertically */
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 30px; /* Match the card's rounded corners */
+        }
+
+        .card .front {
+            background-color: #DFF5C9;
+        }
+
+        .card .front h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: white;
+            text-align: center;
+            width: 60%;
+        }
+
+        .card .back {
+            transform: rotateY(180deg);
+            border: 4px solid #ccc;
+
+        }
+
+        .card:hover .front {
+            transform: rotateY(-180deg);
+        }
+
+        .card:hover .back {
+            transform: rotateY(0);
+        }
+
+        .card .back h3 {
+            font-size: 24px; /* Bigger, bold font for "System Learning" */
+            font-weight: bold;
+            margin-bottom: 15px; /* Space between title and content */
+        }
+
+        .card .back p {
+            text-align: center; /* Center-aligned text */
+            line-height: 1.5; /* Improved readability */
+        }
+
+        .card .back a {
+            text-decoration: none; /* Remove underline from links */
+            /*    set underline*/
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 2px;
+            color: #333;
+        }
+
+        .card .back a:hover {
+            border-bottom: 2px solid #333;
+        }
+
+        .goodlives-gm {
+            display: flex;
+            justify-content: space-between;
+            padding: 50px;
+            background-color: #FFFFFF; /* White background */
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+            @media screen and (max-width: 768px) {
+                flex-direction: column;
+                gap: 50px;
+            }
+        }
+
+        .goodlives-gm .content {
+            flex-basis: 60%; /* Using flex-basis instead of width for more flexibility */
+            padding-right: 50px;
+        }
+
+        .goodlives-gm h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .goodlives-gm p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            color: #333333; /* Dark gray color */
+        }
+
+        .goodlives-gm button {
+            background-color: #F36A24; /* Orange color */
+            color: #FFFFFF; /* White text */
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .goodlives-gm .image {
+            flex-basis: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0px 200px 200px 200px; /* Rounded shape */
+            overflow: hidden; /* Hide overflow */
+        }
+
+        .goodlives-gm .image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .goodlives-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px; /* Add some padding for small screens */
+            box-sizing: border-box; /* Include padding in the total width */
+        }
+
+        .goodlives-container h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .goodlives-container h2 {
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            line-height: 1.4;
+            color: #666;
+        }
+
+        .goodlives-container p {
+            font-size: 20px;
+            font-weight: 300;
+            margin-bottom: 25px;
+            line-height: 1.5;
+            color: #777;
+        }
+
+        .goodlives-container .emphasis {
+            font-weight: 400;
+            color: #555;
+        }
+
+        /* For tablet devices */
+        @media (max-width: 768px) {
+            .goodlives-container h1 {
+                font-size: 30px;
+            }
+
+            .goodlives-container h2 {
+                font-size: 24px;
+            }
+
+            .goodlives-container p {
+                font-size: 18px;
+            }
+        }
+
+        /* For mobile devices */
+        @media (max-width: 480px) {
+            .goodlives-container {
+                margin: 20px auto;
+            }
+
+            .goodlives-container h1 {
+                font-size: 24px;
+            }
+
+            .goodlives-container h2 {
+                font-size: 20px;
+            }
+
+            .goodlives-container p {
+                font-size: 16px;
+            }
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .text-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .box {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 24px;
+            border-radius: 15px;
+        }
+
+        .purple {
+            background-color: #d17af8;
+            padding: 8px;
+            border-radius: 13px;
+            color: white;
+        }
+
+        .orange {
+            background-color: #ff914a;
+            padding: 8px;
+            border-radius: 13px;
+            color: white;
+        }
+
+        .teal {
+            background-color: #4bff6e;
+            padding: 8px;
+            border-radius: 13px;
+            color: white;
+        }
+
+        .image-section{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px;
+            border: rgb(1,152,142) 5px solid;
+            border-radius: 300px 0px 300px 300px;
+        }
+
+        .image-section img {
+            width: 100%; /* Adjust based on the actual size of your image */
+            height: 100%; /* Adjust based on the actual size of your image */
+            border-radius: 300px 0px 300px 300px;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 1000px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .image-section {
+                margin-top: 30px;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="text-section">
+        <div class="box">
+            <span class="purple">Connecting</span>
+            <span>Leaders.</span>
+        </div>
+        <div class="box">
+            <span class="orange">Shifting</span>
+            <span>systems.</span>
+        </div>
+        <div class="box">
+            <span class="teal">Reducing</span>
+            <span>inequalities.</span>
+        </div>
+    </div>
+    <div class="image-section">
+        <img src="https://thumbs.dreamstime.com/z/group-kids-outdoors-looking-down-camera-square-format-128588960.jpg" alt="Group of people smiling">
+    </div>
+</div>
+
+<!--hero section container-->
+<div class="goodlives-container">
+    <h1>We are GoodLives GM</h1>
+    <h2>We are a system shifting capability for Greater Manchester working to reduce inequalities by tackling system
+        barriers to embedding and spreading community-focused innovation in GM</h2>
+    <p>Across Greater Manchester we find many examples of brilliant community focused innovation tackling
+        inequalities.</p>
+    <p>But the very systems that are intended to help people can sometimes create barriers to transformative work like
+        this, reducing its impact and even bringing it to a standstill.</p>
+    <p>If community focused innovation tackling inequalities is to flourish we need to name the system barriers we
+        encounter, for example in our leadership and governance arrangements, in how people work together, and in how
+        money and other resources are distributed.</p>
+    <p class="emphasis">Barriers like these can be shifted. Systems can be enablers.</p>
+    <p>With focus and collective action we can change our systems so they work better for the people of Greater
+        Manchester - and for us.</p>
+</div>
+<!--card content-->
+<div class="card-wrapper">
+    <div class="card">
+        <div class="front" style="background-color: #e978af">
+            <img src="plant.png" alt="Avatar" style="width:100%">
+            <h2>
+                System Leadership Development
+            </h2>
+        </div>
+        <div class="back">
+            <h3>System Learning</h3>
+            <p>GoodLives GM captures, synthesises and shares learning that is useful to people and places tackling
+                inequalities. Learn with us.</p>
+            <a href="#" class="backcardlink">
+                Learn With Us.
+            </a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="front" style="background-color: #b9b926">
+            <img src="movement.png" alt="Avatar" style="width:100%">
+            <h2>Movement Building</h2>
+        </div>
+        <div class="back">
+            <h3>System Learning</h3>
+            <p>GoodLives GM captures, synthesises and shares learning that is useful to people and places tackling
+                inequalities. Learn with us.</p>
+            <a href="#" class="backcardlink">
+                Learn With Us.
+            </a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="front" style="background-color: #e978af">
+            <img src="plant.png" alt="Avatar" style="width:100%">
+            <h2>Movement Building</h2>
+        </div>
+        <div class="back">
+            <h3>System Learning</h3>
+            <p>GoodLives GM captures, synthesises and shares learning that is useful to people and places tackling
+                inequalities. Learn with us.</p>
+            <a href="#" class="backcardlink">
+                Learn With Us.
+            </a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="front" style="background-color: #0066b2">
+            <img src="program.png" alt="Avatar" style="width:100%">
+            <h2>Movement Building</h2>
+        </div>
+        <div class="back">
+            <h3>
+                Program Design
+            </h3>
+            <p>GoodLives GM captures, synthesises and shares learning that is useful to people and places tackling
+                inequalities. Learn with us.</p>
+            <a href="#" class="backcardlink">
+                Learn With Us.
+            </a>
+        </div>
+    </div>
+</div>
+<!--about the About Goodlives GM-->
+<div class="goodlives-gm">
+    <div class="content">
+        <h1>About GoodLives GM</h1>
+        <p>GoodLives GM is a system shifting capability for Greater Manchester working to reduce inequalities by
+            tackling system barriers to embedding and spreading community focused innovation in GM.</p>
+        <p>GoodLives GM grew from a series of conversations with brave leaders and brilliant innovators across Greater
+            Manchester who identified common barriers to embedding this kind of innovation and shared our ambition to
+            shift them. These people lead powerful work like Elephant's Trail, Living Well, GM Moving and Healthy Hyde,
+            and we explored with them how a system shifting capability could help them tackle the system barriers they
+            experience.</p>
+        <button>Find out more</button>
+    </div>
+    <div class="image">
+        <img src="https://thumbs.dreamstime.com/z/smiling-career-woman-10092676.jpg?w=768"
+             alt="People discussing">
+    </div>
+</div>
+
+</body>
+</html>
