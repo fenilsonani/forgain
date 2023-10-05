@@ -219,11 +219,10 @@
 
 
 .goodlives-gm {
+    max-width: 900px;
+    margin: 50px auto;
     display: flex;
     justify-content: space-between;
-    padding: 50px;
-    background-color: #FFFFFF; /* White background */
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
     @media screen and (max-width: 768px) {
         flex-direction: column;
         gap: 50px;
@@ -260,16 +259,16 @@
 
 .goodlives-gm .image {
     flex-basis: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0px 200px 200px 200px; /* Rounded shape */
-    overflow: hidden; /* Hide overflow */
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 0px 400px 400px 400px; /* Rounded shape */
+    /* Hide overflow */
 }
 
 .goodlives-gm .image img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
 }
 
